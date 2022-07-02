@@ -6,6 +6,8 @@ public class PlayerDead : MonoBehaviour
 {
     [SerializeField] private GameObject player;
 
+    [SerializeField] private LevelManager manager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,13 @@ public class PlayerDead : MonoBehaviour
 
     public void Respawn()
     {
-        transform.position = new Vector3(0f, 0f, 0f);
+        if (manager.currentStage == "None")
+        {
+            transform.position = new Vector3(0f, 0f, 0f);
+        }
+        else if (manager.currentStage == "Stage1")
+        {
+            transform.position = new Vector3(100f, 1f, 0f);
+        }
     }
 }
