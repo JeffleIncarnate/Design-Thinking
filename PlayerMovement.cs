@@ -12,6 +12,10 @@ public class MovementPlayer : MonoBehaviour
 
     bool jump = false;
 
+    public Vector3 smallSize;
+
+    public Vector3 normalSize;
+
     // Update is called once per frame
     void Update()
     {
@@ -21,11 +25,25 @@ public class MovementPlayer : MonoBehaviour
         {
             jump = true;
         }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Crouch();
+        }
+        else
+        {
+            this.transform.localScale = normalSize;
+        }
     }
 
     void FixedUpdate()
     {
         controller.Move(horizontalMove * Time.fixedDeltaTime, false, jump);
         jump = false;
+    }
+
+    public void Crouch()
+    {
+        this.transform.localScale = smallSize;
     }
 }
