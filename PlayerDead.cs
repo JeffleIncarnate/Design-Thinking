@@ -17,7 +17,7 @@ public class PlayerDead : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.y <= -10)
+        if (player.transform.position.y <= -15)
         {
             Respawn();
         }
